@@ -7,7 +7,7 @@ User
 Repository Input via Streamlit (repo path entered)
  │
  ▼
-Repository Scanner
+Repository Scanner ---> display results
  │
  ▼
 File Analyzer
@@ -50,7 +50,7 @@ Component Responsibilities
 3. File Analyzer
     Extracts useful information from each file.
     Example: This component renders the homepage and coordinates navigation between quiz modes.
-    
+
 4. Repository Knowledge Base
     Stores repository understanding for later retrieval.
 
