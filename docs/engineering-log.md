@@ -170,3 +170,77 @@ Phase C
 
 STATUS:
 COMPLETE
+
+# Day 2 Engineering Notes
+
+## Lesson 1: Ignore Rules vs Traversal Control
+
+Initial implementation used:
+
+repo.rglob("*")
+
+We discovered that ignored directories were still being traversed even when they appeared in ignored_dirs.
+
+Key insight:
+
+Ignoring a directory and preventing traversal are different concepts.
+
+Solution:
+
+Created a dedicated traversal engine using walk_repository() with recursive traversal control.
+
+---
+
+## Lesson 2: Preserve Context
+
+Initially recursive traversal returned:
+
+app.py
+
+instead of:
+
+src/app.py
+
+Key insight:
+
+Repository context must be preserved during recursion.
+
+Solution:
+
+Introduced root_path and generated paths relative to repository root.
+
+---
+
+## Lesson 3: Detection vs Inference
+
+Technology Detector reports facts rather than conclusions.
+
+Example:
+
+Found:
+
+* package.json
+* vite.config.js
+
+Detector reports:
+
+* Node.js
+* Vite
+
+Reasoning about project type will be handled by future layers.
+
+---
+
+## Lesson 4: Architecture Evolves
+
+Originally planned profiles:
+
+* Understanding
+* Diagnostic
+* Full Repository
+
+During implementation we discovered that Diagnostic and Full Repository were effectively identical.
+
+Decision:
+
+Removed Full Repository mode from MVP scope.
